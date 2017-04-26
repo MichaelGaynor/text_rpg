@@ -121,15 +121,7 @@ class Witch(Monster):
     print("dho` .-.    `    .oyooooso..://++:-::/:///-://:---")
     print("s/.   ``         ./ysosyho/:/oss:..-/o:+//:-----..")
     print("-`               //osooyhy++-`` `::-so:+s//-.`````")
-    print("``               -//ossyyoy/```-/+.o//../---`     ")
-    print(".                `/:oyyyss+.--o+/-.o:-` ` ` ````  ")
-    print("``               `:/syyyso:` `::--`.-/      ````  ")
-    print(" `                -+oyyys+. --..-`  :/    ` ````  ")
-    print("                  :/+ssss: ``````   `        `    ")
-    print(" `                -s//+o+.  ``                    ")
-    print("       `          -++-++/`  `:``                  ")
-    print("                  .//:/+:  `//-`                  ")
-    print("                  `:/-:/-` -+//.                  ")
+
 
 
 
@@ -172,16 +164,5 @@ class Black_phillip(Monster):
     print("ooo+`        ```       `                  `` -:::-")
     print("oo/.        -+:-`    ```                 ``  `:::-")
     print("o/`  ``    -oss+:. ` `.`                 `   `---.")
-    print("o:   ``   .+ssso+:..`                         `-..")
-    print("+`        :ossssoo::-                         `...")
-    print(":         ossssssso+:.                         `.`")
-    print(".        .ssoosossso+-`                         ``")
-    print("`        :ooo+++++oo+-                            ")
-    print("        `++++///////:`                            ")
-    print("        .///::::----.                             ")
-    print("        -::::--....`                              ")
-    print("       `........`.`                               ")
-    print("        ``````````                                ")
-    print("        ````````                                  ")
-    print("                                                 `")
+
                                                   
