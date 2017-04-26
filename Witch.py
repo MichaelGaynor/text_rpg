@@ -1,9 +1,7 @@
-class Witch(object):
+from Monster import Monster
+class Witch(Monster):
   def __init__(self):
-    self.health = 20
-    self.power = 60
-    self.name = "unholy Witch"
-    self.xp_value = 150
+    super(Witch, self).__init__("unholy Witch", 20, 60, 150)
 
   def print_image(self):
     print("MMMMMMMMMMMMmoyy++sysyydmNNmdmNNNmmddhhhhyyyo++++/")
@@ -43,8 +41,3 @@ class Witch(object):
     print("       `          -++-++/`  `:``                  ")
     print("                  .//:/+:  `//-`                  ")
     print("                  `:/-:/-` -+//.                  ")
-    
-  def take_damage(self, damage):
-    self.health -= damage
-  def is_alive(self):
-    return self.health > 0

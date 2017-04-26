@@ -1,9 +1,7 @@
-class Vampire(object):
+from Monster import Monster
+class Vampire(Monster):
   def __init__(self):
-    self.health = 12
-    self.power = 5
-    self.name = "foul Vampire"
-    self.xp_value = 10
+    super(Vampire, self).__init__("foul Vampire", 12, 5, 10)
 
   def print_image(self):
       print("                                                  ")
@@ -44,13 +42,4 @@ class Vampire(object):
       print("         `..`      `--.`-:`.``.-`` ``-:-`         ")
       print("      `.---..`    -+/-`` `..../sy+ `..//:.`       ")
       print("  `-:/+///:..`` `-:yhhs:` `.:/+o/.  .--:+oooo+-`  ")
-      print(":syyyyyysssyyso+:-..-++/--:.---.``.:oyhhhso+/++o/ ")
-      print("ys+:.```..-:/osyhy:.` ```ss`   ```/hhs/-`       ..")
-      print(":              `-osoos/:`+o.`-/++/++-     `.-:--.`")
-      print("   `.-..````` ` `//+++/-` `  `.-://+/```..--:/::-.")
-      print("`...--:-.......```.-::-`        `````.:::-::--...`")
 
-  def take_damage(self, damage):
-    self.health -= damage
-  def is_alive(self):
-    return self.health > 0

@@ -26,9 +26,12 @@
 
 
 from Hero import Hero
-from Goblin import Goblin
-from Vampire import Vampire
-from Witch import Witch
+from Monster import Monster
+from Monster import Goblin
+from Monster import Vampire
+from Monster import Witch
+from random import randint
+
 
 print("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM")
 print("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM")
@@ -72,44 +75,19 @@ hero_name = raw_input("> ")
 
 the_hero = Hero(hero_name)
 monsters = []
+# monsters_types = ["vampire", "goblin"]
+
+# for i in range(0, number_of_enemies):
+#   rand_num = randint(0,len(monsters_types)-1)
+#   if(monsters_types[i] == "vampire"):
+#     monsters.append(Vampire())
+#   elif(monsters_types[i] == "goblin"):
+#     monsters.append(Goblin())
+
 region_enemy = Goblin
 game_on = True
-# monsters.append(Goblin())
-# monsters.append(Vampire())
-# monsters.append(Witch())
 
-# def choose_region():
-#   global region_enemy
-#   print (" ")
-#   print ("In what region wouldst thou start?")
-#   print ("1. The Shimmering Vale")
-#   print ("2. The Dark Woods")
-#   print ("3. The Blasted Heath")
-#   print ("4. Noplace, I wouldst leave this accursed realm")
-#   region_choice = raw_input("> ")
-#   if region_choice == "1":
-#     region_enemy = Goblin
-#   elif region_choice == "2":
-#     region_enemy = Vampire
-#   elif region_choice == "3":
-#     region_enemy = Witch
-#   elif region_choice == "4":
-#     game_on = False
-#     break
-#   return region_enemy
 
-# choose_region()
-
-# def enemy_generator(region_enemy):
-#   global monsters
-#   monsters = []
-#   print (" ")
-#   print ("How many monsters dare you fight?")
-#   number_of_enemies = int(raw_input("> "))
-#   for i in range(0, number_of_enemies):
-#     monsters.append(region_enemy())
-
-# enemy_generator(region_enemy)
 while game_on == True:
 
   def choose_region():
@@ -162,7 +140,8 @@ while game_on == True:
     elif region_choice == "3":
       region_enemy = Witch
     elif region_choice == "4":
-      game_on = False
+      # game_on = False
+      region_enemy = Black_phillip
     return region_enemy
 
   choose_region()
@@ -173,7 +152,12 @@ while game_on == True:
     print (" ")
     print ("How many monsters dare you fight?")
     number_of_enemies = int(raw_input("> "))
-    for i in range(0, number_of_enemies):
+    for i in range(0, number_of_enemies + 1):
+      # rand_num = randint(0,len(monsters_types)-1)
+      # if(monsters_types[i] == "vampire"):
+      #   monsters.append(Vampire())
+      # elif(monsters_types[i] == "goblin"):
+      #   monsters.append(Goblin())
       monsters.append(region_enemy())
 
   enemy_generator(region_enemy)
@@ -181,56 +165,7 @@ while game_on == True:
   for monster in monsters:
   # for i in range(0, len(monsters)-1):
     print ("Brave %s, thou hast encountered a %s" % (hero_name, monster.name))
-    if monster.name == "Goblin":
-      monster.print_image()
-
-    elif monster.name == "unholy Witch":
-      monster.print_image()
-
-    elif monster.name == "foul Vampire":
-      print("                                                  ")
-      print("           ``    `..-:+++///-..``                 ")
-      print("          ` ``.-/+oossshmdsssso/:..``             ")
-      print("          ````.-:+oyyyhdNNysosoo+/-.`             ")
-      print("            .:+ssysoossymdo+//osyhs/.`            ")
-      print("          .oddhyhdNms+shmhs+ohmNdhyys:`           ")
-      print("         `/syhysyydds/:/oo/oyyyyooooo++`          ")
-      print("         ./+/--..-::/-`./..::.....-:/o/-          ")
-      print("         :/-`          -y-          ``.-`         ")
-      print("         ...   Y O U   +mo   A R E   .```         ")
-      print("         `./          `odo`         .:.`          ")
-      print("          `:`    ..---.+ho-```.    `:-.`          ")
-      print("           :hmddNho+:-.ydy:.-/sdysosyy-           ")
-      print("          :+//oso:-`.-/yNd+.`-/osoo:-.--          ")
-      print("         `..:ss+::+/-:+hNd/..-::/-:++//`          ")
-      print("           ```:.``.-...:/:``.+y+::--..``          ")
-      print("             `.```-/::-:/:---++:.````             ")
-      print("              .``-/+osddddhs+/+o/` `.             ")
-      print("               `..::::+ooo++/:--:.``              ")
-      print("              `-:-:++/+oyyooo///:..               ")
-      print("             `:/:.    `...``  `-/+/`              ")
-      print("             ``    `.`../-::.`   `..              ")
-      print("                 `.`.       .--`                  ")
-      print("               ````           ``                  ")
-      print("                    F O O D                       ")
-      print("                                                  ")
-      print("                  .``````...``                    ")
-      print("                  ..`  `.--`.--                   ")
-      print("                   .------:--.+:                  ")
-      print("                     `.://.   .:`                 ")
-      print("                      `  --   `-                  ")
-      print("                `` `.----`.:/:-`                  ")
-      print("               .:. `-+yNmh:` -`                   ")
-      print("              .--.``.:hNNNs` -/:`                 ")
-      print("               ``...--:dNh:``.:-.                 ")
-      print("         `..`      `--.`-:`.``.-`` ``-:-`         ")
-      print("      `.---..`    -+/-`` `..../sy+ `..//:.`       ")
-      print("  `-:/+///:..`` `-:yhhs:` `.:/+o/.  .--:+oooo+-`  ")
-      print(":syyyyyysssyyso+:-..-++/--:.---.``.:oyhhhso+/++o/ ")
-      print("ys+:.```..-:/osyhy:.` ```ss`   ```/hhs/-`       ..")
-      print(":              `-osoos/:`+o.`-/++/++-     `.-:--.`")
-      print("   `.-..````` ` `//+++/-` `  `.-://+/```..--:/::-.")
-      print("`...--:-.......```.-::-`        `````.:::-::--...`")
+    monster.print_image()
 
     # Run game as long as BOTH characters have health
     while monster.health > 0 and the_hero.is_alive():
@@ -238,13 +173,12 @@ while game_on == True:
       print (" ")
       print ("Thou hast %d health and %d power." % (the_hero.health, the_hero.power))
       print ("The %s has %d health and %d power." % (monster.name, monster.health, monster.power))
-      print (" ")
       print ("What wouldst thou?")
       print ("1. fight %s" % (monster.name))
       print ("2. do nothing, I am sorely afrighted")
       print ("3. flee")
       print ("4. Drink aqua vitae")
-      print ("5. I wouldst leave this wretched game for good!")
+      # print ("5. I wouldst leave this wretched game for good!")
       user_input = raw_input("> ")
       if user_input == "1":
         monster.take_damage(the_hero.power)
@@ -264,9 +198,9 @@ while game_on == True:
       elif (user_input == "4"):
         the_hero.increase_health(20)
 
-      elif (user_input == "5"):
-        game_on = False
-        break
+      # elif (user_input == "5"):
+      #   game_on = False
+      #   break
 
       elif (user_input == "CONSUME"):
         the_hero.health += monster.health
@@ -286,21 +220,19 @@ while game_on == True:
         print ("Thou hast defeated the %s" %(monster.name))
         the_hero.xp += monster.xp_value
         the_hero.check_level()
-        choose_region()
-        enemy_generator(region_enemy)
+        monsters.remove(monster)
+        if monsters == []:
+          choose_region()
+          enemy_generator(region_enemy)
 
       if (monster.health > 0):
         the_hero.health -= monster.power
         print ("The %s hits you for %d damage" % (monster.name, monster.power))
         if the_hero.is_alive() == False:
           print ("Thou hast been defeated by the %s" % (monster.name))
+          the_hero.health = the_hero.max_health
           choose_region()
           enemy_generator(region_enemy)
-
-
-
-
-
 
 
 

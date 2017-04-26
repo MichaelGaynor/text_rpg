@@ -1,9 +1,7 @@
-class Goblin(object):
+from Monster import Monster
+class Goblin(Monster):
   def __init__(self):
-    self.health = 6
-    self.power = 2
-    self.name = "Goblin"
-    self.xp_value = 5
+    super(Goblin, self).__init__("wretched Goblin", 6, 2, 5)
 
   def print_image(self):
     print("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM")
@@ -34,24 +32,3 @@ class Goblin(object):
     print("MMMMMMMMMMMMMMMMMydMMMMMMMMMMMMM//-.sMMMMMMMMMMMMM")
     print("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm:ssMMMMMMMMMMMMMM")
     print("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM")
-    
-  def take_damage(self, damage):
-    self.health -= damage
-  def is_alive(self):
-    return self.health > 0
-
-# class Goblin_Guard(object):
-#   def __init__(self):
-#     self.health = 8
-#     self.power = 3
-#     self.name = "Goblin Guard"
-
-
-# class Goblin_King(object):
-#   def __init__(self):
-#     self.health = 10
-#     self.power = 5
-#     self.name = "Goblin King"
-#     self.items = {
-#       "gold": 100
-#     }
