@@ -258,6 +258,11 @@ while playing == True:
           print ("Thine health is now %d and thine power is now %d" % (the_hero.health, the_hero.power))
           print ("The world has grown darker, He is well pleased with thee")
 
+      elif (user_input == "THERE CAN BE ONLY ONE!"):
+        the_hero.max_health += 20000
+        the_hero.health += the_hero.max_health
+        the_hero.power += 1000
+
       else:
         print ("Those words mean naught here.")
         pass
