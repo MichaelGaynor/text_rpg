@@ -125,9 +125,9 @@ class Witch(Monster):
 
 
 
-class Black_phillip(Monster):
+class Goat_guy(Monster):
   def __init__(self):
-    super(Black_phillip, self).__init__("Black Phillip, King of All", 666, 666, 666)
+    super(Goat_guy, self).__init__("Goat Guy, King of All", 666, 666, 666)
   def print_image(self):
     print("`.....--:::://+ooossssoooooooooosssssssssyysssssss")
     print("...----:::://+ossssssssssssooossssssssssyyyyyyyyyy")

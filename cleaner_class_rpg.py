@@ -9,14 +9,14 @@ from Monster import Monster
 from Monster import Goblin
 from Monster import Vampire
 from Monster import Witch
-from Monster import Black_phillip
+from Monster import Goat_guy
 # from Events import Events
 # from random import randint
 
 
 # ----------------------HERE WE SET SOME OF OUR GLOBAL VARIABLES----------------------
 monsters = []
-monster_types = ["goblins", "vampires", "witches", "black phillip"]
+monster_types = ["goblins", "vampires", "witches", "Goat Guy"]
 region_enemy = Goblin
 region = 0
 game_on = True
@@ -90,7 +90,7 @@ else:
 # Event.choose_region()
 def choose_region():
   global region
-  # global region_enemy
+  global region_enemy
   print (" ")
   print (" ")
   print (" ")
@@ -149,7 +149,7 @@ def choose_region():
     print (" ")
     print (" ")
     print ("You may not leave until you face me.")
-    # region_enemy = Black_phillip()
+    region_enemy = Goat_guy()
 
 
 # ----------------------HERE WE ASK FOR THE NUMBER OF ENEMIES-------------------------
@@ -161,7 +161,13 @@ def enemy_generator(listspot):
   game_on = True
   print (" ")
   print ("How many monsters dare you fight?")
-  number_of_enemies = int(raw_input("> "))
+  the_number = int(raw_input("> "))
+  if the_number < 30 and region_enemy == Goat_guy:
+    number_of_enemies = 1
+  elif the_number < 30 and region_enemy != Goat_guy:
+    number_of_enemies = the_number
+  else:
+    print("Don't be a dick")
   for i in range(0, number_of_enemies):
     if (monster_types[listspot] == "goblins"):
       monsters.append(Goblin())
@@ -169,8 +175,8 @@ def enemy_generator(listspot):
       monsters.append(Vampire())
     elif (monster_types[listspot] == "witches"):
       monsters.append(Witch())
-    elif (monster_types[listspot] == "black phillip"):
-      monsters.append(Black_phillip())
+    elif (monster_types[listspot] == "Goat Guy"):
+      monsters.append(Goat_guy())
 
 
 # ----------------------HERE WE TRULY ENTER THE GAME----------------------------------
@@ -184,7 +190,7 @@ while playing == True:
     print (" ")
     monster.print_image()
     print (" ")
-    if monster.name == "Black Phillip, King of All":
+    if monster.name == "Goat Guy, King of All":
       print ("Brave %s, thou hast encountered %s" % (hero_name, monster.name))
     else:
       print ("Brave %s, thou hast encountered a %s" % (hero_name, monster.name))
@@ -192,7 +198,7 @@ while playing == True:
       # print (" ")
       # print (" ")
       print ("Thou hast %d health and %d power." % (the_hero.health, the_hero.power))
-      if monster.name == "Black Phillip, King of All":
+      if monster.name == "Goat Guy, King of All":
         print ("%s has %d health and %d power." % (monster.name, monster.health, monster.power))
       else:
         print ("The %s has %d health and %d power." % (monster.name, monster.health, monster.power))
@@ -214,7 +220,7 @@ while playing == True:
 
       if user_input == "1":
         monster.take_damage(the_hero.power)
-        if monster.name == "Black Phillip, King of All":
+        if monster.name == "Goat Guy, King of All":
           print ("Thou has done %d damage to %s" % (the_hero.power, monster.name))
           print ("He seems amused.")
         else:
@@ -249,7 +255,7 @@ while playing == True:
         the_hero.health += monster.health
         the_hero.power += monster.power
         monster.health -= monster.health
-        if monster.name == "Black Phillip, King of All":
+        if monster.name == "Goat Guy, King of All":
           print ("Thou acquired %s's strength" % (monster.name))
           print ("Thine health is now %d and thine power is now %d" % (the_hero.health, the_hero.power))
           print ("The world has grown darker, He is well pleased with thee")
@@ -269,7 +275,7 @@ while playing == True:
 
 
   # ----------------------WHILE FIGHTING------------------------------------------------
-      if monster.health <= 0 and monster.name == "Black Phillip, King of All":
+      if monster.health <= 0 and monster.name == "Goat Guy, King of All":
         global monsters
         print (" ")
         print (" ")
@@ -279,14 +285,12 @@ while playing == True:
         print (" ")
         print (" ")
         if soul_forfeited == False:
-          print ("Black Phillip: 'Thou art incorruptible. Be free, %s.'" % (hero_name))
+          print ("Goat Guy: 'Thou art incorruptible. Be free, %s.'" % (hero_name))
           game_on = False
           playing = False
         elif soul_forfeited == True:
           print (" ")
-          print ("Black Phillip: 'Didst thou truly think My power had no price?'")
-          print (" ")
-          print ("Black Phillip: 'That to surrender thy soul was some jest?'")
+          print ("Goat Guy: 'Didst thou truly think My power had no price?'")
           print (" ")
           print ("You forfeited your soul for the power to CONSUME.")
           print ("He has chosen to collect on thy debt now.")
@@ -295,7 +299,7 @@ while playing == True:
           game_on = False
           playing = False         
 
-      if monster.health <= 0 and monster.name != "Black Phillip, King of All":
+      if monster.health <= 0 and monster.name != "Goat Guy, King of All":
         global monsters
         print ("Thou hast defeated the %s" %(monster.name))
         the_hero.xp += monster.xp_value
