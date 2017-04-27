@@ -187,141 +187,142 @@ while playing == True:
   choose_region()
   enemy_generator(region)
   for monster in monsters:
-    print (" ")
-    monster.print_image()
-    print (" ")
-    if monster.name == "Goat Guy, King of All":
-      print ("Brave %s, thou hast encountered %s" % (hero_name, monster.name))
-    else:
-      print ("Brave %s, thou hast encountered a %s" % (hero_name, monster.name))
-    while monster.health > 0 and the_hero.is_alive() and game_on == True:
-      # print (" ")
-      # print (" ")
-      print ("Thou hast %d health and %d power." % (the_hero.health, the_hero.power))
+    if game_on == True:
+      print (" ")
+      monster.print_image()
+      print (" ")
       if monster.name == "Goat Guy, King of All":
-        print ("%s has %d health and %d power." % (monster.name, monster.health, monster.power))
+        print ("Brave %s, thou hast encountered %s" % (hero_name, monster.name))
       else:
-        print ("The %s has %d health and %d power." % (monster.name, monster.health, monster.power))
-      print (" ")
-      print (" ")
-      print (" ")
-      print ("What wouldst thou?")
-      print ("1. Fight %s" % (monster.name))
-      print ("2. Do nothing, I am sorely afrighted")
-      print ("3. Flee")
-      print ("4. Drink aqua vitae")
-      global soul_forfeited
-      if soul_forfeited:
-        print ("---or---")
-        print ("Type CONSUME to use His power")
-      else:
-        print ("5. Forfeit thy soul to acquire His power")
-      user_input = raw_input("> ")
-
-      if user_input == "1":
-        monster.take_damage(the_hero.power)
+        print ("Brave %s, thou hast encountered a %s" % (hero_name, monster.name))
+      while monster.health > 0 and the_hero.is_alive() and game_on == True:
+        # print (" ")
+        # print (" ")
+        print ("Thou hast %d health and %d power." % (the_hero.health, the_hero.power))
         if monster.name == "Goat Guy, King of All":
-          print ("Thou has done %d damage to %s" % (the_hero.power, monster.name))
-          print ("He seems amused.")
+          print ("%s has %d health and %d power." % (monster.name, monster.health, monster.power))
         else:
-          print ("Thou hast done %d damage to the %s" % (the_hero.power, monster.name))
-
-      elif (user_input == "2"):
-        print ("To dare not is to fail.")
-        pass
-
-      elif (user_input == "3"):
-        print ("Thou escapest with thine soul intact.")
-        print (" ")
-        print ("God speed thee on thy way, coward.")
-        game_on = False
-
-      elif (user_input == "4"):
-        the_hero.increase_health(20)
-
-      elif (user_input == "5"):
-        soul_forfeited = True
-        print ("...")
-        print ("The deal is struck,")
-        print ("CONSUME those who oppose thee,")
-        print ("and thou shalt have their power")
+          print ("The %s has %d health and %d power." % (monster.name, monster.health, monster.power))
         print (" ")
         print (" ")
         print (" ")
-
-      elif (user_input == "CONSUME"):
-        soul_forfeited = True
-        the_hero.max_health += monster.health
-        the_hero.health += monster.health
-        the_hero.power += monster.power
-        monster.health -= monster.health
-        if monster.name == "Goat Guy, King of All":
-          print ("Thou acquired %s's strength" % (monster.name))
-          print ("Thine health is now %d and thine power is now %d" % (the_hero.health, the_hero.power))
-          print ("The world has grown darker, He is well pleased with thee")
+        print ("What wouldst thou?")
+        print ("1. Fight %s" % (monster.name))
+        print ("2. Do nothing, I am sorely afrighted")
+        print ("3. Flee")
+        print ("4. Drink aqua vitae")
+        global soul_forfeited
+        if soul_forfeited:
+          print ("---or---")
+          print ("Type CONSUME to use His power")
         else:
-          print ("Thou acquired the %s's strength" % (monster.name))
-          print ("Thine health is now %d and thine power is now %d" % (the_hero.health, the_hero.power))
-          print ("The world has grown darker, He is well pleased with thee")
+          print ("5. Forfeit thy soul to acquire His power")
+        user_input = raw_input("> ")
 
-      elif (user_input == "THERE CAN BE ONLY ONE!"):
-        the_hero.max_health += 20000
-        the_hero.health += the_hero.max_health
-        the_hero.power += 1000
+        if user_input == "1":
+          monster.take_damage(the_hero.power)
+          if monster.name == "Goat Guy, King of All":
+            print ("Thou has done %d damage to %s" % (the_hero.power, monster.name))
+            print ("He seems amused.")
+          else:
+            print ("Thou hast done %d damage to the %s" % (the_hero.power, monster.name))
 
-      else:
-        print ("Those words mean naught here.")
-        pass
+        elif (user_input == "2"):
+          print ("To dare not is to fail.")
+          pass
 
-
-  # ----------------------WHILE FIGHTING------------------------------------------------
-      if monster.health <= 0 and monster.name == "Goat Guy, King of All":
-        global monsters
-        print (" ")
-        print (" ")
-        print (" ")
-        print (" ")
-        print ("Thou hast defeated %s" %(monster.name))
-        print (" ")
-        print (" ")
-        if soul_forfeited == False:
-          print ("Goat Guy: 'Thou art incorruptible. Be free, %s.'" % (hero_name))
-          game_on = False
-          playing = False
-        elif soul_forfeited == True:
+        elif (user_input == "3"):
+          print ("Thou escapest with thine soul intact.")
           print (" ")
-          print ("Goat Guy: 'Didst thou truly think My power had no price?'")
-          print (" ")
-          print ("You forfeited your soul for the power to CONSUME.")
-          print ("He has chosen to collect on thy debt now.")
-          print ("You are defeated.")
-          print (" ")
-          game_on = False
-          playing = False         
-
-      if monster.health <= 0 and monster.name != "Goat Guy, King of All":
-        global monsters
-        print ("Thou hast defeated the %s" %(monster.name))
-        the_hero.xp += monster.xp_value
-        the_hero.check_level()
-        monsters.remove(monster)
-        if monsters == []:
+          print ("God speed thee on thy way, coward.")
           game_on = False
 
-      if (monster.health > 0):
-        the_hero.health -= monster.power
-        print ("The %s hits you for %d damage" % (monster.name, monster.power))
-        if the_hero.is_alive() == False:
+        elif (user_input == "4"):
+          the_hero.increase_health(20)
+
+        elif (user_input == "5"):
+          soul_forfeited = True
+          print ("...")
+          print ("The deal is struck,")
+          print ("CONSUME those who oppose thee,")
+          print ("and thou shalt have their power")
           print (" ")
           print (" ")
-          print ("Thou hast been defeated by the %s" % (monster.name))
+          print (" ")
+
+        elif (user_input == "CONSUME"):
+          soul_forfeited = True
+          the_hero.max_health += monster.health
+          the_hero.health += monster.health
+          the_hero.power += monster.power
+          monster.health -= monster.health
+          if monster.name == "Goat Guy, King of All":
+            print ("Thou acquired %s's strength" % (monster.name))
+            print ("Thine health is now %d and thine power is now %d" % (the_hero.health, the_hero.power))
+            print ("The world has grown darker, He is well pleased with thee")
+          else:
+            print ("Thou acquired the %s's strength" % (monster.name))
+            print ("Thine health is now %d and thine power is now %d" % (the_hero.health, the_hero.power))
+            print ("The world has grown darker, He is well pleased with thee")
+
+        elif (user_input == "THERE CAN BE ONLY ONE!"):
+          the_hero.max_health += 20000
+          the_hero.health += the_hero.max_health
+          the_hero.power += 1000
+
+        else:
+          print ("Those words mean naught here.")
+          pass
+
+
+    # ----------------------WHILE FIGHTING------------------------------------------------
+        if monster.health <= 0 and monster.name == "Goat Guy, King of All":
+          global monsters
           print (" ")
           print (" ")
-          print ("Thy game is ended, thy soul forfeit.")
-          the_hero.health = the_hero.max_health
-          game_on = False  
-          playing = False
-          
+          print (" ")
+          print (" ")
+          print ("Thou hast defeated %s" %(monster.name))
+          print (" ")
+          print (" ")
+          if soul_forfeited == False:
+            print ("Goat Guy: 'Thou art incorruptible. Be free, %s.'" % (hero_name))
+            game_on = False
+            playing = False
+          elif soul_forfeited == True:
+            print (" ")
+            print ("Goat Guy: 'Didst thou truly think My power had no price?'")
+            print (" ")
+            print ("You forfeited your soul for the power to CONSUME.")
+            print ("He has chosen to collect on thy debt now.")
+            print ("You are defeated.")
+            print (" ")
+            game_on = False
+            playing = False         
+
+        if monster.health <= 0 and monster.name != "Goat Guy, King of All":
+          global monsters
+          print ("Thou hast defeated the %s" %(monster.name))
+          the_hero.xp += monster.xp_value
+          the_hero.check_level()
+          monsters.remove(monster)
+          if monsters == []:
+            game_on = False
+
+        if (monster.health > 0) and game_on == True:
+          the_hero.health -= monster.power
+          print ("The %s hits you for %d damage" % (monster.name, monster.power))
+          if the_hero.is_alive() == False:
+            print (" ")
+            print (" ")
+            print ("Thou hast been defeated by the %s" % (monster.name))
+            print (" ")
+            print (" ")
+            print ("Thy game is ended, thy soul forfeit.")
+            the_hero.health = the_hero.max_health
+            game_on = False  
+            playing = False
+            
 
 
 
